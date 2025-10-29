@@ -1,0 +1,37 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        int n=nums.length,count=1,maxel=nums[0];
+        Arrays.sort(nums);
+        for(int i=1;i<n;i++){
+            if(nums[i]==nums[i-1]){
+                count++;
+            }
+            if(count>n/2){
+                maxel=nums[i];
+                break;
+            }
+            if(nums[i]!=nums[i-1]){
+                count=1;
+            }
+        }
+        return maxel;
+    }
+}
+
+#Using Hashmap
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i: nums){
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        int ans=0;
+        int mv=0;
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            if(entry.getValue()>=mv){
+                ans=entry.getKey();
+                mv=entry.getValue();
+            }
+        }
+        return ans;
+    }
