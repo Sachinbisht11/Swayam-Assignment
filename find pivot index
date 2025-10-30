@@ -1,0 +1,16 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int totalsum=Total(nums,0);
+        return Index(nums,0,0,totalsum);
+    }
+    int Total(int[] nums, int i){
+        if(i==nums.length)return 0;
+        return nums[i]+Total(nums,i+1);
+    }
+    int Index(int[] nums,int i, int lsum, int totalsum){
+        if(i==nums.length) return -1;
+        int rsum=totalsum-lsum-nums[i];
+        if(rsum==lsum) return i;
+        return Index(nums,i+1,lsum+nums[i],totalsum);
+    }
+}
