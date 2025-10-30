@@ -1,0 +1,25 @@
+class Solution {
+    public int towerOfHanoi(int n, int from, int to, int aux) {
+        // code here
+        if(n==0) return 0;
+        int c=0;
+        c+=towerOfHanoi(n-1,from,aux,to);
+        c++;
+        c+=towerOfHanoi(n-1,aux,to,from);
+        return c;
+    }
+}
+
+OR
+Using Formula: T(n) = 2*T(n-1) + 1
+  
+class Solution {
+    public int towerOfHanoi(int n, int from, int to, int aux) {
+        return countToH(n);
+    }
+
+    int countToH(int n) {
+        if (n == 0) return 0;
+        return 2 * countToH(n - 1) + 1;
+    }
+}
