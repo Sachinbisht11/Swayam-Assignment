@@ -1,0 +1,29 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int bp=prices[0];
+        int bi=0;
+        int si=0;
+        int sp=prices[0];
+        int max = sp-bp;
+        for(int i=0;i<prices.length;i++){
+            if(bp>prices[i]){
+                bi=i;
+                bp=prices[i];
+            }
+            if(bi>si){
+                si=bi;
+                sp=prices[si];
+            }
+            if(sp<prices[i] && i>bi){
+                si=i;
+                sp=prices[i];
+            }
+            int profit=sp-bp;
+            if(profit>max){
+                max=profit;
+            }
+        }
+        
+        return max;
+    }
+}
