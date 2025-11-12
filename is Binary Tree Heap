@@ -1,0 +1,43 @@
+/*
+class Node {
+    int data;
+    Node left,right;
+    Node(int d){
+        data=d;
+        left=right=null;
+    }
+}
+*/
+
+import java.util.*;
+
+class Solution {
+    public boolean isHeap(Node root) {
+        if (root == null) return true;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        boolean foundNullChild = false;
+
+        while (!q.isEmpty()) {
+            Node node = q.poll();
+
+            if (node.left != null) {
+                if (foundNullChild) return false;
+                if (node.data < node.left.data) return false;
+                q.add(node.left);
+            } else {
+                foundNullChild = true;
+            }
+
+            if (node.right != null) {
+                if (foundNullChild) return false;
+                if (node.data < node.right.data) return false;
+                q.add(node.right);
+            } else {
+                foundNullChild = true;
+            }
+        }
+        return true;
+    }
+}
