@@ -1,0 +1,42 @@
+/*
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int val) {
+        this.data = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+*/
+class Solution {
+    public ArrayList<Integer> topView(Node root) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        if (root == null) return ans;
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        Queue<Node> q = new LinkedList<>();
+        Queue<Integer> q2 = new LinkedList<>();
+        q.add(root);
+        q2.add(0);
+        while(!q.isEmpty()){
+            Node node=q.poll();
+            int n=q2.poll();
+            if(!map.containsKey(n)){
+                map.put(n,node.data);
+            }
+            if(node.left!=null){
+                q.add(node.left);
+                q2.add(n-1);
+            }
+            if(node.right!=null){
+                q.add(node.right);
+                q2.add(n+1);
+            }
+        }
+        for(int a:map.values()){
+            ans.add(a);
+        }
+        return ans;
+    }
+}
