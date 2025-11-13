@@ -1,0 +1,11 @@
+class Solution {
+    public static int countSetBits(int n) {
+        // code here
+        int sum=0;
+        while(n>0){
+            sum+=Integer.bitCount(n);
+            n--;
+        }
+        return sum;
+    }
+}
