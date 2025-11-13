@@ -1,0 +1,17 @@
+import java.math.BigInteger;
+class Solution {
+    public int numTrees(int n) {
+        BigInteger a=fact(2*n);
+        BigInteger b=fact(n+1);
+        BigInteger c=fact(n);
+        BigInteger ans=a.divide((b.multiply(c)));
+        return ans.intValue();
+    }
+    BigInteger fact(int n){
+        BigInteger res=BigInteger.ONE;
+        for(int i=2;i<=n;i++){
+            res=res.multiply(BigInteger.valueOf(i));
+        }
+        return res;
+    }
+}
