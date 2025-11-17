@@ -1,0 +1,14 @@
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int l=0;
+        int r=1;
+        int sum=0;
+        while(r<nums.length){
+            sum=sum+Math.min(nums[l],nums[r]);
+            l+=2;
+            r+=2;
+        }
+        return sum;
+    }
+}
