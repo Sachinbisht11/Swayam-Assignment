@@ -1,0 +1,23 @@
+class Solution {
+    public int minPlatform(int arr[], int dep[]) {
+        //  code here
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+        int c=0;
+        int maxc=0;
+        int i=0;
+        int j=0;
+        while(i<arr.length && j<dep.length){
+            if(arr[i]<=dep[j]){
+                c++;
+                i++;
+                maxc=Math.max(c,maxc);
+            }
+            else{
+                c--;
+                j++;
+            }
+        }
+        return maxc;
+    }
+}
