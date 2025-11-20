@@ -1,0 +1,15 @@
+class Solution {
+    public int countNumbersWithUniqueDigits(int n) {
+        if(n==0) return 1;
+        int sum=10;
+        int prd=9;
+        int x=2;
+        while(x<=n){
+            prd=prd*(9-x+2);
+            x++;
+            sum+=prd;
+        }
+        return sum;
+
+    }
+}
